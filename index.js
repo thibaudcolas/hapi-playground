@@ -44,7 +44,12 @@ server.register([
     throw err;
   }
 
-  server.auth.strategy('simple', 'basic', { validateFunc: auth.validate });
+  // Create a strategy with the name of simple that refers to our scheme named basic. We also pass an options object that gets passed to the scheme and allows us to configure its behavior.
+  // We could have also used mode, first optional parameter, and may be either true, false, 'required', 'optional', or 'try'.
+  // The default mode is false, which means that the strategy will be registered but not applied anywhere until you do so manually.
+  server.auth.strategy('simple', 'basic', {
+    validateFunc: auth.validate,
+  });
 
   server.route({
     // The method parameter can be any valid HTTP method, array of HTTP methods, or an asterisk to allow any method.
@@ -60,6 +65,8 @@ server.register([
     method: 'GET',
     path: '/{name}',
     config: {
+      // Explicitly enable auth per-route, defining which strategy to use.
+      // If enabled by default, can also be disabled per-route with auth: false.
       auth: 'simple',
       handler(request, reply) {
         reply(`Hello, ${encodeURIComponent(request.params.name)}, ${request.auth.credentials.name}!`);
