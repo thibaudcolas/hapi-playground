@@ -1,0 +1,53 @@
+{
+  "name": "hapi-playground",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": "plugin:springload/recommended",
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "react/jsx-indent": [
+        "error",
+        2
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        2
+      ]
+    }
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "boom": "^5.1.0",
+    "dotenv": "^4.0.0",
+    "good": "^7.2.0",
+    "good-console": "^6.4.0",
+    "good-squeeze": "^5.0.2",
+    "hapi": "^16.4.3",
+    "hapi-auth-basic": "^4.2.0",
+    "inert": "^4.2.0",
+    "joi": "^10.5.2",
+    "knex": "^0.13.0",
+    "lodash": "^4.17.4",
+    "objection": "^0.8.3",
+    "pg": "^6.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-springload": "^1.0.2",
+    "jest": "^20.0.4",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest"
+  }
+}
