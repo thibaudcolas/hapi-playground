@@ -7,6 +7,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "^8.1.0",
+    "npm": "^5.0.3"
+  },
   "eslintConfig": {
     "extends": "plugin:springload/recommended",
     "rules": {
