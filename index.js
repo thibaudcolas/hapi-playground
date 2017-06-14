@@ -104,6 +104,16 @@ server.register([
     },
   });
 
+  // Multi-segment parameters ?!
+  server.route({
+    method: 'GET',
+    path: '/hello/{user*2}',
+    handler(request, reply) {
+      const userParts = request.params.user.split('/');
+      reply(`hello ${encodeURIComponent(userParts[0])} ${encodeURIComponent(userParts[1])}!`);
+    },
+  });
+
   server.start((err) => {
     if (err) {
       throw err;
