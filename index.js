@@ -10,6 +10,16 @@ const PORT = process.env.PORT || 5000;
 const server = new Hapi.Server();
 server.connection({ port: PORT });
 
+// Name of the cookie, and config.
+server.state('test_data', {
+  ttl: null,
+  isSecure: true,
+  isHttpOnly: true,
+  encoding: 'base64json',
+  clearInvalid: false, // remove invalid cookies
+  strictHeader: true, // don't allow violations of RFC 6265
+});
+
 const logPlugin = {
   register: Good,
   options: {
@@ -57,19 +67,31 @@ server.register([
     //  The path parameter defines the path including parameters. It can contain optional parameters, numbered parameters, and even wildcards.
     path: '/',
     handler(request, reply) {
-      reply('Hello, world!');
+      reply('Hello, world!').state('test_data', { firstVisit: false });
+    },
+    config: {
+      cache: {
+        expiresIn: 30 * 1000,
+        // private means it should not be cached by intermediate caches.
+        privacy: 'private',
+      },
     },
   });
 
   server.route({
     method: 'GET',
-    path: '/{name}',
+    path: '/{name}/{ttl?}',
     config: {
       // Explicitly enable auth per-route, defining which strategy to use.
       // If enabled by default, can also be disabled per-route with auth: false.
       auth: 'simple',
       handler(request, reply) {
-        reply(`Hello, ${encodeURIComponent(request.params.name)}, ${request.auth.credentials.name}!`);
+        const response = reply(`Hello, ${encodeURIComponent(request.params.name)}, ${request.auth.credentials.name}!`);
+
+        if (request.params.ttl) {
+          // Overrides config.cache.expiresIn
+          response.ttl(parseFloat(request.params.ttl));
+        }
       },
     },
   });
