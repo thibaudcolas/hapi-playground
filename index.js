@@ -2,8 +2,10 @@ const Hapi = require('hapi');
 const Inert = require('inert');
 const Good = require('good');
 
+const PORT = process.env.PORT || 5000;
+
 const server = new Hapi.Server();
-server.connection({ port: 3000, host: 'localhost' });
+server.connection({ port: PORT });
 
 server.route({
   // The method parameter can be any valid HTTP method, array of HTTP methods, or an asterisk to allow any method.
