@@ -1,9 +1,16 @@
 # [hapi-playground](https://hapi-playground.herokuapp.com/)
 
+> Playground for back-end projects with Node.
+
+## Tools
+
+* [hapi.js](https://hapijs.com/)
+* [yarn](https://yarnpkg.com/)
+
 ```sh
 nvm install
-npm install
-npm run start
+yarn install
+yarn start
 ```
 
 ## Deployment
@@ -13,7 +20,7 @@ Hosted on Heroku at [https://hapi-playground.herokuapp.com/](https://hapi-playgr
 To deploy,
 
 ```sh
-npm run deploy
+yarn deploy
 ```
 
 ### Setup
