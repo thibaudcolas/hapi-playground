@@ -9,6 +9,17 @@
   "eslintConfig": {
     "extends": "plugin:springload/prettier"
   },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "proseWrap": "preserve"
+  },
   "dependencies": {
     "bcrypt": "^1.0.2",
     "boom": "^5.1.0",
