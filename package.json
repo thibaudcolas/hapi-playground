@@ -2,31 +2,12 @@
   "name": "hapi-playground",
   "version": "0.1.0",
   "private": true,
-  "description": "",
+  "description": "Playground for back-end projects with Node",
   "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "engines": {
-    "node": "^6.9.4",
-    "npm": "^3.10.10"
-  },
+  "author": "Thibaud Colas",
+  "license": "MIT",
   "eslintConfig": {
-    "extends": "plugin:springload/recommended",
-    "rules": {
-      "indent": [
-        "error",
-        2
-      ],
-      "react/jsx-indent": [
-        "error",
-        2
-      ],
-      "react/jsx-indent-props": [
-        "error",
-        2
-      ]
-    }
+    "extends": "plugin:springload/prettier"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
